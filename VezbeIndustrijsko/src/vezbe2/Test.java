@@ -21,34 +21,42 @@ public class Test {
 		}*/
 		
 		//Sluzi za input sa konzole
-		int korisnickiBroj;
-		System.out.println("Unesite broj");
-		Scanner it = new Scanner(System.in);
+		/*
+		 * int korisnickiBroj; System.out.println("Unesite broj"); Scanner it = new
+		 * Scanner(System.in);
+		 * 
+		 * korisnickiBroj = it.nextInt();
+		 * 
+		 * //FOR petlja int rezultat = 0; for(int i=0;i<=korisnickiBroj;i=i+2) {
+		 * rezultat = rezultat+i; } System.out.println(rezultat);
+		 * 
+		 * //WHILE Petlja int brojac = 0; while(brojac<=korisnickiBroj) { rezultat =
+		 * rezultat+brojac; brojac+=2;
+		 * 
+		 * } System.out.println(rezultat);
+		 * 
+		 * //DO-WHILE Petlja brojac = 0; do { rezultat = rezultat + brojac; brojac =
+		 * brojac +2; } while(brojac <= korisnickiBroj); System.out.println(rezultat);
+		 */
 		
-		korisnickiBroj = it.nextInt();
-		
-		//FOR petlja
-		int rezultat = 0;
-		for(int i=0;i<=korisnickiBroj;i=i+2) {
-			rezultat = rezultat+i;
+		int brojPrestupnihGodina = 0;
+		/*for(int godina = 2022;godina<2100;godina++) {
+			if(godina%4 == 0) {
+				brojPrestupnihGodina++;
+			}
+		}*/
+		for(int godina = 2022; godina<2100;godina = godina +4) {
+			if(godina == 2022) {
+				godina = 2024;
+				brojPrestupnihGodina++;
+				System.out.println(godina);
+			}else {
+				System.out.println(godina);
+				brojPrestupnihGodina++;
+			}
 		}
-		System.out.println(rezultat);
 		
-		//WHILE Petlja
-		int brojac = 0;
-		while(brojac<=korisnickiBroj) {
-			rezultat = rezultat+brojac;
-			brojac+=2;
-			
-		}
-		System.out.println(rezultat);
-		
-		//DO-WHILE Petlja
-		do {
-			
-		}
-		while();
-
+		System.out.println(brojPrestupnihGodina);
 	}
 
 }
