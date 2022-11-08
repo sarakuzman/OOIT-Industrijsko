@@ -19,9 +19,24 @@ public class Test {
 		
 		//System.out.println(p2.x);
 		
-		System.out.println(p1.getX());
+		/*System.out.println(p1.getX());
 		p1.setX(15);
-		System.out.println(p1.getX());
+		System.out.println(p1.getX());*/
+		
+		//VEZBE 4
+		p1.setX(5);
+		p1.setY(5);
+		p2.setX(1);
+		p2.setY(2);
+		
+		System.out.println(p1.distance(p2.getX(), p2.getY()));
+		
+		Line l1 = new Line();
+		l1.setStartPoint(p1);
+		l1.setEndPoint(p2);
+		System.out.println(l1);
+		System.out.println(l1.getEndPoint());
+		System.out.println(l1.getEndPoint().getX());
 
 	}
 
