@@ -30,6 +30,11 @@ public class Rectangle {
 		return 2*width + 2*height;
 	}
 	
+	@Override
+	public String toString() {
+		return "Upper left point: " + upperLeft + ", width: " + width + ", height: " + height;
+	}
+	
 	public Point getUpperLeft() {
 		return upperLeft;
 	}

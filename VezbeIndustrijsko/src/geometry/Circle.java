@@ -14,6 +14,11 @@ public class Circle {
 		return radius*2*Math.PI;
 	}
 	
+	@Override
+	public String toString() {
+		return "Center: " + center + ", radius: " + radius;
+	}
+	
 	public Point getCenter() {
 		return center;
 	}
