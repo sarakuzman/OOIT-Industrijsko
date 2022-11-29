@@ -25,6 +25,26 @@ public class Point {
 		return "(" + x + ", " + y + ")";
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Point) {
+			Point temp = (Point)obj;
+			if(this.x == temp.getX() &&
+					this.y == temp.getY()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean contains(int x, int y) {
+		return distance(x,y) <= 2;
+	}
+	
+	public boolean contains(Point p) {
+		return contains(p.getX(),p.getY());
+	}
+	
 	public double distance(int x, int y) {
 		int dX = this.x- x;
 		int dY = this.y - y;

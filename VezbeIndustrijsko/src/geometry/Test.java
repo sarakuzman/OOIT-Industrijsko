@@ -38,8 +38,8 @@ public class Test {
 		System.out.println(l1.getEndPoint());
 		System.out.println(l1.getEndPoint().getX());*/
 		
-		//Vezbe 5
-		Point p1 = new Point(15,10,true);
+								//Vezbe 5
+		/*Point p1 = new Point(15,10,true);
 		System.out.println(p1.getX());
 		
 		Line l1 = new Line(p1, new Point(5,5),false);
@@ -51,8 +51,20 @@ public class Test {
 		// tacke linije l1 i y koordinate tacke p1
 		
 		r1.getUpperLeft().setX(l1.getStartPoint().getX() + p1.getY());
-		System.out.println(p1);
+		System.out.println(p1);*/
 		
+		
+									//VEZBE 6
+		Point p1 = new Point(5,4);
+		Point p2 = new Point(5,4);
+		System.out.println(p1.equals(p2));
+		
+		Line l1 = new Line(p1,p2);
+		System.out.println(l1.equals(l1));
+		Rectangle r1 = new Rectangle(p1,15,15);
+		System.out.println(r1.equals(r1));
+		Circle c1 = new Circle(p2,15);
+		System.out.println(c1.equals(c1));
 
 	}
 

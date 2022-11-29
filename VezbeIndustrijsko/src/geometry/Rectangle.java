@@ -35,6 +35,19 @@ public class Rectangle {
 		return "Upper left point: " + upperLeft + ", width: " + width + ", height: " + height;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Rectangle) {
+			Rectangle temp = (Rectangle)obj;
+			if(this.getUpperLeft().equals(temp.getUpperLeft()) &&
+					this.width == temp.getWidth() && 
+					this.height == temp.getHeight()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public Point getUpperLeft() {
 		return upperLeft;
 	}

@@ -26,6 +26,27 @@ public class Line {
 				"(" + endPoint.getX() + ", " + endPoint.getY() + ")";
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Line) {
+			Line temp = (Line)obj;
+			if(this.startPoint.equals(temp.getStartPoint())
+					&& this.endPoint.equals(temp.getEndPoint())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean contains(int x, int y) {
+		return (length()- (this.startPoint.distance(x, y)+
+				this.endPoint.distance(x, y))) <= 2;
+	}
+	
+	public boolean contains(Point p) {
+		return contains(p.getX(),p.getY());
+	}
+	
 	public double length() {
 		return startPoint.distance(endPoint.getX(), endPoint.getY());
 	}
