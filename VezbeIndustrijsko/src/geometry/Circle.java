@@ -19,6 +19,14 @@ public class Circle {
 		this.radius = radius;
 	}
 	
+	public boolean contains(int x, int y) {
+		return (center.distance(x,y)<= radius);
+	}
+	
+	public boolean contains(Point p) {
+		return contains(p.getX(), p.getY());
+	}
+	
 	@Override
 	public String toString() {
 		return "Center: " + center + ", radius: " + radius;
