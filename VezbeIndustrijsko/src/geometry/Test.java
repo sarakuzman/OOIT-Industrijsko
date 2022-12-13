@@ -1,5 +1,7 @@
 package geometry;
 
+import java.util.Arrays;
+
 public class Test {
 
 	public static void main(String[] args) {
@@ -55,7 +57,7 @@ public class Test {
 		
 		
 									//VEZBE 6
-		Point p1 = new Point(5,4);
+		/*Point p1 = new Point(5,4);
 		Point p2 = new Point(5,4);
 		System.out.println(p1.equals(p2));
 		
@@ -64,7 +66,26 @@ public class Test {
 		Rectangle r1 = new Rectangle(p1,15,15);
 		System.out.println(r1.equals(r1));
 		Circle c1 = new Circle(p2,15);
-		System.out.println(c1.equals(c1));
+		System.out.println(c1.equals(c1));*/
+		
+									//VEZBE 8
+		
+		Circle c1 = new Circle(new Point(5,5),50);
+		Circle c2 = new Circle(new Point(10,10),40);
+		Circle c3 = new Circle(new Point(25,5),30);
+		Circle c4 = new Circle(new Point(1,1),100);
+		
+		Circle[] krugovi = {c1,c2,c3,c4};
+		System.out.println("Trenutni raspored u nizu:");
+		for(Circle c: krugovi) {
+			System.out.println(c.toString());
+		}
+		
+		System.out.println("Uredjen raspored u nizu:");
+		Arrays.sort(krugovi);
+		for(Circle c: krugovi) {
+			System.out.println(c.toString());
+		}
 
 	}
 

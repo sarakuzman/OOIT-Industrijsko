@@ -46,6 +46,26 @@ public class Line extends Shape {
 		
 	}
 	
+	@Override
+	public void moveTo(int x, int y) {
+		//Prazna metoda
+	}
+
+	@Override
+	public void moveBy(int byX, int byY) {
+		startPoint.moveBy(byX, byY);
+		endPoint.moveBy(byX, byY);
+	}
+	
+	@Override
+	public int compareTo(Object o) {
+		if(o instanceof Line) {
+			Line temp = (Line)o;
+			return ((int)(this.length()-temp.length()));
+		}
+		return 0;
+	}
+	
 	public boolean contains(int x, int y) {
 		return (length()- (this.startPoint.distance(x, y)+
 				this.endPoint.distance(x, y))) <= 2;
@@ -71,6 +91,7 @@ public class Line extends Shape {
 	public void setEndPoint(Point endPoint) {
 		this.endPoint = endPoint;
 	}
+	
 
 	
 	
