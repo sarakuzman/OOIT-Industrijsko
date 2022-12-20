@@ -1,6 +1,6 @@
 package geometry;
 
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class Test {
 
@@ -70,7 +70,7 @@ public class Test {
 		
 									//VEZBE 8
 		
-		Circle c1 = new Circle(new Point(5,5),50);
+		/*Circle c1 = new Circle(new Point(5,5),50);
 		Circle c2 = new Circle(new Point(10,10),40);
 		Circle c3 = new Circle(new Point(25,5),30);
 		Circle c4 = new Circle(new Point(1,1),100);
@@ -85,7 +85,28 @@ public class Test {
 		Arrays.sort(krugovi);
 		for(Circle c: krugovi) {
 			System.out.println(c.toString());
+		}*/
+			
+								//VEZBE 10
+		
+		/*Scanner scanner = new Scanner(System.in);
+		try {
+			int mojBroj = scanner.nextInt();
+		} catch (Exception e) {
+			System.out.println("Vas unos nije dobar, unesite broj");
 		}
+		finally{
+			System.out.println("Ovaj deo koda se uvek izvrsava");
+		}*/
+		
+		Circle c1 = new Circle();
+		
+		try {
+			c1.setRadius(-5);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
 
 	}
 
