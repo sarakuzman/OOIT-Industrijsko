@@ -1,5 +1,6 @@
 package drawing;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Circle extends Shape{
@@ -45,14 +46,16 @@ public class Circle extends Shape{
 	@Override
 	public void draw(Graphics g) {
 		
-		g.drawOval(this.getCenter().getX()-this.getRadius(),
+		g.setColor(getOutline());
+		g.setColor(Color.black);
+		
+		/*g.drawOval(this.getCenter().getX()-this.getRadius(),
 					this.getCenter().getY()-this.getRadius(),
 					this.getRadius()*2, 
 					this.getRadius()*2);
 		
 		if (isSelected()==true) {
-			
-			
+			g.setColor(Color.black);
 			g.drawRect(this.getCenter().getX()-3, this.getCenter().getY()-3, 6, 6);
 			g.drawRect(this.getCenter().getX()-3, this.getCenter().getY()- this.getRadius()-3, 6, 6);
 			g.drawRect(this.getCenter().getX()-3, this.getCenter().getY()+this.getRadius()-3, 6, 6);
@@ -60,8 +63,9 @@ public class Circle extends Shape{
 			g.drawRect(this.getCenter().getX()+this.getRadius()-3, this.getCenter().getY()-3, 6, 6);
 			
 		}
-		
+		*/
 	}
+	
 	@Override
 	public boolean contains(int x, int y) {
 		return this.getCenter().distance(x, y)  <= this.getRadius();
@@ -90,9 +94,13 @@ public class Circle extends Shape{
 	}
 	@Override
 	public void AreaPainter(Graphics g) {
-		// TODO Auto-generated method stub
+		g.setColor(getFill());
+		g.fillOval(this.getCenter().getX()-this.getRadius(), 
+				this.getCenter().getY()-this.getRadius(), 
+				this.getRadius()*2,this.getRadius()*2);
 		
 	}
+
 		
 		
 	

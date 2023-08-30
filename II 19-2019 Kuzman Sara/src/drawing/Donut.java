@@ -1,5 +1,6 @@
 package drawing;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Donut extends Circle {
@@ -36,6 +37,9 @@ public class Donut extends Circle {
 	}
 	
 	public void draw (Graphics g) {
+		
+		g.setColor(getOutline());
+		g.setColor(Color.black);
 		super.draw(g);
 		g.drawOval(this.getCenter().getX()-this.getInnerRadius(), this.getCenter().getY()-this.getInnerRadius(), 
 				this.getInnerRadius()*2, this.getInnerRadius()*2);
@@ -64,5 +68,21 @@ public class Donut extends Circle {
 		}
 		dlgDonut.setVisible(true);
 	}
+	
+	@Override
+	public void AreaPainter(Graphics g) {
+		super.AreaPainter(g);
+		g.setColor(getFill());
+		g.drawOval(this.getCenter().getX()-this.getInnerRadius(), 
+				this.getCenter().getY()-this.getInnerRadius(), 
+				this.getInnerRadius()*2,this.getInnerRadius()*2);
+		g.setColor(Color.WHITE);
+		g.fillOval(this.getCenter().getX()-this.getInnerRadius(), 
+				this.getCenter().getY()-this.getInnerRadius(), 
+				this.getInnerRadius()*2,this.getInnerRadius()*2);
+		
+	}
+	
+	
 	
 }

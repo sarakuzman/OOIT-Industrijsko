@@ -1,5 +1,6 @@
 package drawing;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Rectangle extends Shape {
@@ -60,7 +61,12 @@ public class Rectangle extends Shape {
 	}
 	@Override
 	public void draw(Graphics g) {
-		if (this.upperLeftPoint != null) {
+		
+		g.setColor(getOutline());
+		g.setColor(Color.black);
+		
+		/*if (this.upperLeftPoint != null) {
+			
 	        g.drawRect(
 	            this.getUpperLeftPoint().getX(),
 	            this.getUpperLeftPoint().getY(),
@@ -80,6 +86,7 @@ public class Rectangle extends Shape {
 		}
 		
 		}
+		*/
 	}
 	
 	@Override
@@ -114,7 +121,11 @@ public class Rectangle extends Shape {
 	}
 	@Override
 	public void AreaPainter(Graphics g) {
-		// TODO Auto-generated method stub
+		
+		g.setColor(getFill());
+		g.fillRect(this.getUpperLeftPoint().getX(), this.getUpperLeftPoint().getY(), this.getWidth(), 
+				this.getHeight());
+		
 		
 	}
 		

@@ -29,7 +29,6 @@ public class StackFrm extends JFrame {
 	public boolean isOk;
 	private JPanel contentPane;
 	
-
 	DefaultListModel<String> dlm = new DefaultListModel<String>();
 	Stack<Rectangle> stack= new Stack<Rectangle>();
 
@@ -54,8 +53,6 @@ public class StackFrm extends JFrame {
 	 * Create the frame.
 	 */
 	public StackFrm() {
-		
-
 		
 		setTitle(" II19-2019 Kuzman Sara ");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -138,14 +135,17 @@ public class StackFrm extends JFrame {
 				}
 				
 				
-				Rectangle rec = stack.peek();
-		        StackDlg stackdlgdelete = new StackDlg();
-		        
-		        stackdlgdelete.getTxtXCoord().setText(String.valueOf(rec.getUpperLeftPoint().getX()));
-		        stackdlgdelete.getTxtYCoord().setText(String.valueOf(rec.getUpperLeftPoint().getY()));
-		        stackdlgdelete.getTxtWidth().setText(String.valueOf(rec.getWidth()));
-		        stackdlgdelete.getTxtHeight().setText(String.valueOf(rec.getHeight()));
 
+				StackDlg stackdlgdelete = new StackDlg();
+		        
+		        
+				
+				
+				String[] split = null;
+				stackdlgdelete.getTxtXCoord().setText(split[1]);
+				stackdlgdelete.getTxtYCoord().setText(split[4]);
+				stackdlgdelete.getTxtWidth().setText(split[7]);
+				stackdlgdelete.getTxtHeight().setText(split[10]);
 				
 				stackdlgdelete.getTxtXCoord().setEditable(false);
 				stackdlgdelete.getTxtYCoord().setEditable(false);
@@ -158,17 +158,13 @@ public class StackFrm extends JFrame {
 				if (stackdlgdelete.isDelete()==true) {
                     stack.pop();
                     dlm.removeElementAt(0);
-                    deleteRectangle();
+                    
                 }
 
             }
 
         
 			
-			private void deleteRectangle() {
-				// TODO Auto-generated method stub
-				
-			}
 		});
 		
 		GroupLayout gl_pnlDown = new GroupLayout(pnlDown);

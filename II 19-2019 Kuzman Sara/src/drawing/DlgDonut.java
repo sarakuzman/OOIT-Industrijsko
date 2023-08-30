@@ -1,9 +1,11 @@
 package drawing;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -16,8 +18,15 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class DlgDonut extends JDialog {
+	
+	
+	private Color outline=Color.BLACK;
+	private Color fill = Color.WHITE;
+	private boolean outlineBool;
+	private boolean fillBool;
 
 	private final JPanel pnlCenter = new JPanel();
 	private JTextField txtXCoord;
@@ -27,6 +36,40 @@ public class DlgDonut extends JDialog {
 	public boolean isOk;
 
 	
+	
+	
+	public Color getOutline() {
+		return outline;
+	}
+
+	public void setOutline(Color outline) {
+		this.outline = outline;
+	}
+
+	public Color getFill() {
+		return fill;
+	}
+
+	public void setFill(Color fill) {
+		this.fill = fill;
+	}
+
+	public boolean isOutlineBool() {
+		return outlineBool;
+	}
+
+	public void setOutlineBool(boolean outlineBool) {
+		this.outlineBool = outlineBool;
+	}
+
+	public boolean isFillBool() {
+		return fillBool;
+	}
+
+	public void setFillBool(boolean fillBool) {
+		this.fillBool = fillBool;
+	}
+
 	public JTextField getTxtXCoord() {
 		return txtXCoord;
 	}
@@ -117,23 +160,45 @@ public class DlgDonut extends JDialog {
 			}
 		});
 		txtInnerRadius.setColumns(10);
+		
+		JButton btnOutlineClr = new JButton("Outline color");
+		btnOutlineClr.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				outline=  JColorChooser.showDialog(null, "Choose a color. ", Color.BLACK);
+				outlineBool=true;
+			}
+		});
+		
+		JButton btnAreaClr = new JButton("Area color");
+		btnAreaClr.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				fill=  JColorChooser.showDialog(null, "Choose a color. ", Color.WHITE);
+				fillBool=true;
+			}
+		});
 		GroupLayout gl_pnlCenter = new GroupLayout(pnlCenter);
 		gl_pnlCenter.setHorizontalGroup(
 			gl_pnlCenter.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_pnlCenter.createSequentialGroup()
 					.addGap(39)
 					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
-					.addGap(53)
-					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING)
-						.addComponent(txtInnerRadius, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtRadius, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtYCoord, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtXCoord, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(193, Short.MAX_VALUE))
+						.addGroup(gl_pnlCenter.createSequentialGroup()
+							.addComponent(btnOutlineClr)
+							.addGap(27)
+							.addComponent(btnAreaClr))
+						.addGroup(gl_pnlCenter.createSequentialGroup()
+							.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
+							.addGap(53)
+							.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING)
+								.addComponent(txtInnerRadius, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtRadius, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtYCoord, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtXCoord, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+					.addContainerGap(184, Short.MAX_VALUE))
 		);
 		gl_pnlCenter.setVerticalGroup(
 			gl_pnlCenter.createParallelGroup(Alignment.LEADING)
@@ -154,7 +219,10 @@ public class DlgDonut extends JDialog {
 					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNewLabel_3)
 						.addComponent(txtInnerRadius, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(58, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnOutlineClr)
+						.addComponent(btnAreaClr)))
 		);
 		pnlCenter.setLayout(gl_pnlCenter);
 		{
@@ -185,6 +253,16 @@ public class DlgDonut extends JDialog {
 										
 										((Donut)shape).setRadius(Integer.parseInt(txtRadius.getText()));
 										((Donut)shape).setInnerRadius(Integer.parseInt(txtInnerRadius.getText()));
+									
+										if (isOutlineBool()==true) { 
+											shape.setOutline(outline);
+											setOutlineBool(false);
+										}
+										if (isFillBool()==true) { 
+											shape.setFill(fill);
+											setFillBool(false);
+										}
+									
 									}
 
 								}

@@ -35,7 +35,7 @@ public class SortFrm extends JFrame {
 	
 	
 	DefaultListModel<String> dlm = new DefaultListModel<String>();
-	Stack<Rectangle> stack= new Stack<Rectangle>();
+	Stack<Rectangle> stack= new Stack();
 	ArrayList<Rectangle> arrayRect = new ArrayList<>();
 	
 	
@@ -115,6 +115,7 @@ public class SortFrm extends JFrame {
 				
 				
 					arrayRect.add(rec);
+					stack.push(rec);
 					Collections.sort(arrayRect);
 					
 					dlm.add(arrayRect.indexOf(rec), " X: " + rec.getUpperLeftPoint().getX() +
@@ -166,7 +167,7 @@ public class SortFrm extends JFrame {
 				
 		
 				if (sortdlgdelete.isDelete()==true) {
-                    arrayRect.remove(0);
+                    arrayRect.remove(rec);
                     dlm.removeElementAt(0);
                     
                 }

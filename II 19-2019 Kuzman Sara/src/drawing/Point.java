@@ -48,18 +48,17 @@ public class Point extends Shape{
 	public void draw(Graphics g) {
 		g.setColor(getOutline());
 		
+		
 		g.drawLine(this.getX()-2 ,this.getY(), this.getX() + 2, this.getY());
 		g.drawLine(this.getX() ,this.getY()-2, this.getX() , this.getY() + 2);
 		
 		if (isSelected()==true) {
+			g.setColor(Color.black);
 			g.drawRect(this.getX()-3, this.getY() - 3, 6,6);
 		}
 		
 	}
-	private Color getOutline() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	@Override
 	public boolean contains(int x, int y) {
 		return this.distance(x, y) <= 3;

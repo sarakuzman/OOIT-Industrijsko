@@ -5,6 +5,23 @@ import java.awt.Graphics;
 
 public abstract class Shape implements Comparable, Moveable{
 
+	
+	public Color getOutline() {
+		return outline;
+	}
+
+	public void setOutline(Color outline) {
+		this.outline = outline;
+	}
+
+	public Color getFill() {
+		return fill;
+	}
+
+	public void setFill(Color fill) {
+		this.fill = fill;
+	}
+
 	public abstract void DialogEdit();
 
 	private Color outline = Color.black;

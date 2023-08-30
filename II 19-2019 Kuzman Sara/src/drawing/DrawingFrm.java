@@ -9,6 +9,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
+
 import java.awt.FlowLayout;
 import javax.swing.SwingConstants;
 import java.beans.PropertyChangeListener;
@@ -31,6 +33,12 @@ import javax.swing.GroupLayout.Alignment;
 
 public class DrawingFrm extends JFrame {
 
+	
+	
+
+	static Color outline=Color.BLACK;
+	static Color area=Color.WHITE;
+	public static Color fill;
 	private JPanel contentPane;
 	private PnlDrawing pnlDrawing= new PnlDrawing();
 
@@ -55,7 +63,7 @@ public class DrawingFrm extends JFrame {
 	 */
 	public DrawingFrm() {
 		setTitle(" II19-2019 Kuzman Sara ");
-		setBounds(100, 100, 550, 490);
+		setBounds(200, 200, 750, 690);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -149,12 +157,66 @@ public class DrawingFrm extends JFrame {
         });
 
         JButton btnModify = new JButton("Modify");
+        btnModify.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		for(Shape shape: PnlDrawing.shapesArrList) {
+        			if(shape.isSelected()) {
+        				shape.DialogEdit();
+        				repaint();
+        				return;
+        			}
+        		}
+        		JOptionPane.showMessageDialog(null,"Please select an object to modify","Error",
+        				JOptionPane.INFORMATION_MESSAGE);
+        		
+        	}
+        });
 
         JButton btnDelete = new JButton("Delete");
+        btnDelete.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		if(PnlDrawing.shapesArrList.isEmpty()) {
+        			JOptionPane.showMessageDialog(null, "Nothing to delete!","Error",
+        					JOptionPane.ERROR_MESSAGE);
+        			return;
+        		}
+        		for (Shape shape : pnlDrawing.shapesArrList) {
+        			if(shape.isSelected()) {
+        				int ans = JOptionPane.showConfirmDialog(null,
+        						"Are you sure you want to delete the selected object?",
+        						"Warning",JOptionPane.YES_NO_OPTION);
+        				if(ans==0) {
+        					PnlDrawing.shapesArrList.remove(shape);
+        				}
+        				return;
+        			}
+        		}
+        		JOptionPane.showMessageDialog(null,"Please select an object","Erroe", JOptionPane.INFORMATION_MESSAGE);
+        	}
+        	
+        });
 
         JButton btnOutlineColor = new JButton("Outline Color");
+        btnOutlineColor.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		outline = JColorChooser.showDialog(null, "Choose a color", Color.BLACK);
+        		if(outline==null) {
+        			outline=Color.BLACK;
+        		}
+        	}
+        });
 
         JButton btnAreaColor = new JButton("Area Color");
+        btnAreaColor.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		area = JColorChooser.showDialog(null, "Choose a color", Color.WHITE);
+        		if(area==null) {
+        			area=Color.WHITE;
+        		}
+        	}
+        });
 
         
         

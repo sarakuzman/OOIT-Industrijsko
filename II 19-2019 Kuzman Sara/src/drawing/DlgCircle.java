@@ -1,9 +1,11 @@
 package drawing;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -19,6 +21,10 @@ import java.awt.event.KeyEvent;
 
 public class DlgCircle extends JDialog {
 
+	private Color outline=Color.BLACK;
+	private Color fill = Color.WHITE;
+	private boolean outlineBool;
+	private boolean fillBool;
 	private final JPanel centerPanel = new JPanel();
 	private JTextField txtXCoord;
 	private JTextField txtYCoord;
@@ -27,6 +33,38 @@ public class DlgCircle extends JDialog {
 
 	
 	
+	public Color getOutline() {
+		return outline;
+	}
+
+	public void setOutline(Color outline) {
+		this.outline = outline;
+	}
+
+	public Color getFill() {
+		return fill;
+	}
+
+	public void setFill(Color fill) {
+		this.fill = fill;
+	}
+
+	public boolean isOutlineBool() {
+		return outlineBool;
+	}
+
+	public void setOutlineBool(boolean outlineBool) {
+		this.outlineBool = outlineBool;
+	}
+
+	public boolean isFillBool() {
+		return fillBool;
+	}
+
+	public void setFillBool(boolean fillBool) {
+		this.fillBool = fillBool;
+	}
+
 	public JTextField getTxtXCoord() {
 		return txtXCoord;
 	}
@@ -106,21 +144,44 @@ public class DlgCircle extends JDialog {
 			}
 		});
 		txtRadius.setColumns(10);
+		
+		JButton btnOutlineClr = new JButton("Outline color");
+		btnOutlineClr.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				outline=  JColorChooser.showDialog(null, "Choose a color. ", Color.BLACK);
+				outlineBool=true;
+			}
+		});
+		
+		JButton btnAreaClr = new JButton("Area color");
+		btnAreaClr.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				fill=  JColorChooser.showDialog(null, "Choose a color. ", Color.WHITE);
+				fillBool=true;
+			}
+		});
 		GroupLayout gl_centerPanel = new GroupLayout(centerPanel);
 		gl_centerPanel.setHorizontalGroup(
 			gl_centerPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_centerPanel.createSequentialGroup()
-					.addGap(34)
-					.addGroup(gl_centerPanel.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(lblNewLabel_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-					.addGap(25)
-					.addGroup(gl_centerPanel.createParallelGroup(Alignment.TRAILING)
-						.addComponent(txtYCoord, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtXCoord, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtRadius, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(212, Short.MAX_VALUE))
+					.addGroup(gl_centerPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_centerPanel.createSequentialGroup()
+							.addGap(34)
+							.addGroup(gl_centerPanel.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(lblNewLabel_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addGap(25)
+							.addGroup(gl_centerPanel.createParallelGroup(Alignment.TRAILING)
+								.addComponent(txtYCoord, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtXCoord, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtRadius, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_centerPanel.createSequentialGroup()
+							.addGap(45)
+							.addComponent(btnOutlineClr)
+							.addGap(42)
+							.addComponent(btnAreaClr)))
+					.addContainerGap(163, Short.MAX_VALUE))
 		);
 		gl_centerPanel.setVerticalGroup(
 			gl_centerPanel.createParallelGroup(Alignment.LEADING)
@@ -137,7 +198,11 @@ public class DlgCircle extends JDialog {
 					.addGroup(gl_centerPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNewLabel_2)
 						.addComponent(txtRadius, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(106, Short.MAX_VALUE))
+					.addGap(31)
+					.addGroup(gl_centerPanel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnOutlineClr)
+						.addComponent(btnAreaClr))
+					.addContainerGap(36, Short.MAX_VALUE))
 		);
 		centerPanel.setLayout(gl_centerPanel);
 		{
@@ -164,9 +229,30 @@ public class DlgCircle extends JDialog {
 									
 									((Circle)shape).setRadius(Integer.parseInt(txtRadius.getText()));
 									
+									if (isOutlineBool()==true) { 
+										shape.setOutline(outline);
+										setOutlineBool(false);
+									}
+									if (isFillBool()==true) { 
+										shape.setFill(fill);
+										setFillBool(false);
+									}
+									
 								}
-
+								}
+								
+							/*	if (isOutlineBool()==true) { 
+									shape.setOutline(outline);
+									setOutlineBool(false);
+								}
+								if (isFillBool()==true) { 
+									shape.setFill(fill);
+									setFillBool(false);
+								}
+							
 							}
+							
+							*/
 							isOk=true;
 							dispose();
 							
