@@ -49,7 +49,7 @@ public class Circle extends Shape{
 		g.setColor(getOutline());
 		g.setColor(Color.black);
 		
-		/*g.drawOval(this.getCenter().getX()-this.getRadius(),
+		g.drawOval(this.getCenter().getX()-this.getRadius(),
 					this.getCenter().getY()-this.getRadius(),
 					this.getRadius()*2, 
 					this.getRadius()*2);
@@ -63,7 +63,7 @@ public class Circle extends Shape{
 			g.drawRect(this.getCenter().getX()+this.getRadius()-3, this.getCenter().getY()-3, 6, 6);
 			
 		}
-		*/
+		
 	}
 	
 	@Override

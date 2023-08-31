@@ -69,6 +69,7 @@ public class Line extends Shape {
 	}
 	
 	
+	
 	public double length() {
 		
 		return start.distance(end.getX(), end.getY());

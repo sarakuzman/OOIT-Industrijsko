@@ -49,6 +49,7 @@ public class Donut extends Circle {
 		return super.contains(x, y) && this.getCenter().distance(x, y)  >= this.getInnerRadius();
 	}
 	
+
 	
 	@Override
 	public void DialogEdit() {

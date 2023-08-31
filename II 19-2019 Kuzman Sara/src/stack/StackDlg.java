@@ -201,7 +201,6 @@ public class StackDlg extends JDialog {
 					}
 
 					private void setDelete(boolean b) {
-						// TODO Auto-generated method stub
 						
 					}
 				});

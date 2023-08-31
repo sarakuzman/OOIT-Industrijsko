@@ -137,7 +137,7 @@ public class StackFrm extends JFrame {
 				
 
 				StackDlg stackdlgdelete = new StackDlg();
-		        
+				
 		        
 				
 				

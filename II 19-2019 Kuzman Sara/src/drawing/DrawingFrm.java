@@ -137,6 +137,7 @@ public class DrawingFrm extends JFrame {
 					shape.setSelected(false);
 					
             }
+        		
         	}
         });
 

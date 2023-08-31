@@ -33,7 +33,7 @@ public class PnlDrawing extends JPanel implements MouseListener {
 				p.setOutline(DrawingFrm.outline);
 				shapesArrList.add(p);
 				System.out.println(shapesArrList);
-		
+				
 			break;
 			
 		case 2:

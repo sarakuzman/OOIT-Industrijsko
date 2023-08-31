@@ -65,7 +65,7 @@ public class Rectangle extends Shape {
 		g.setColor(getOutline());
 		g.setColor(Color.black);
 		
-		/*if (this.upperLeftPoint != null) {
+		if (this.upperLeftPoint != null) {
 			
 	        g.drawRect(
 	            this.getUpperLeftPoint().getX(),
@@ -86,7 +86,7 @@ public class Rectangle extends Shape {
 		}
 		
 		}
-		*/
+		
 	}
 	
 	@Override

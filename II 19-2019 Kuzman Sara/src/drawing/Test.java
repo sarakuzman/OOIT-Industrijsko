@@ -6,6 +6,7 @@ public class Test {
 		//Point p1= new Point();
 		//System.out.println(p1);
 		
+		
 
 		Line l1 = new Line();
 		Point p1= new Point(1,1);

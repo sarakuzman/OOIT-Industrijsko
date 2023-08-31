@@ -241,18 +241,11 @@ public class DlgCircle extends JDialog {
 								}
 								}
 								
-							/*	if (isOutlineBool()==true) { 
-									shape.setOutline(outline);
-									setOutlineBool(false);
-								}
-								if (isFillBool()==true) { 
-									shape.setFill(fill);
-									setFillBool(false);
-								}
 							
-							}
 							
-							*/
+						
+							
+				
 							isOk=true;
 							dispose();
 							

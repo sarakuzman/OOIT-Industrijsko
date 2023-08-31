@@ -246,4 +246,6 @@ public class DlgLine extends JDialog {
 		}
 	}
 
+	
+	
 }

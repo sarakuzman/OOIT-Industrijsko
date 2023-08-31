@@ -9,6 +9,8 @@ public abstract class Shape implements Comparable, Moveable{
 	public Color getOutline() {
 		return outline;
 	}
+	
+	
 
 	public void setOutline(Color outline) {
 		this.outline = outline;

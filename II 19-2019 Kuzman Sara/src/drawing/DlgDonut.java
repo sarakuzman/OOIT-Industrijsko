@@ -264,6 +264,7 @@ public class DlgDonut extends JDialog {
 										}
 									
 									}
+									
 
 								}
 							isOk=true;

@@ -40,6 +40,7 @@ public class Drawing extends JFrame {
 		setContentPane(contentPane);
 	}
 	
+	
 	public void paint (Graphics g) {
 		
 		Point p1=new Point(50,50,false);

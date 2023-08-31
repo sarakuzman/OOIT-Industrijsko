@@ -45,7 +45,7 @@ public class SortDlg extends JDialog {
 			}
 		});
 	}
-
+	
 	/**
 	 * Create the frame.
 	 */

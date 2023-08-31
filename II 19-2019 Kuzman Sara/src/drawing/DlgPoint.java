@@ -169,7 +169,6 @@ public class DlgPoint extends JDialog {
 										outlineBool=false;
 									}
 								}
-								
 							}
 
 						}

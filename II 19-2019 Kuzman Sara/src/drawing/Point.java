@@ -58,7 +58,7 @@ public class Point extends Shape{
 		}
 		
 	}
-
+	
 	@Override
 	public boolean contains(int x, int y) {
 		return this.distance(x, y) <= 3;
